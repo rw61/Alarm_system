@@ -59,14 +59,11 @@ static int buttonPressed = 0;
 	 MODIFY_REG(GPIOB->PUPDR, GPIO_PUPDR_PUPDR1_0 | GPIO_PUPDR_PUPDR2_0 | GPIO_PUPDR_PUPDR5_0 | GPIO_PUPDR_PUPDR10_0 | GPIO_PUPDR_PUPDR14_0 | GPIO_PUPDR_PUPDR4_0,
 	 GPIO_PUPDR_PUPDR1_1 | GPIO_PUPDR_PUPDR2_1 |	GPIO_PUPDR_PUPDR5_1 | GPIO_PUPDR_PUPDR10_1 | GPIO_PUPDR_PUPDR14_1 | GPIO_PUPDR_PUPDR4_1 );  //установка пина в состоянии PULL_DOWN, тоесть на пине будет 0. комбинация PUPDR -10(первый бит один- нулевой бит ноль) 
 	
-
 ////////// Кнопка USER Batton на плате Nucleo ////////////////
 	 
 	 CLEAR_BIT(GPIOC->MODER, GPIO_MODER_MODER13_0 | GPIO_MODER_MODER13_1); 
          MODIFY_REG(GPIOC->PUPDR, GPIO_PUPDR_PUPDR13_1, GPIO_PUPDR_PUPDR13_0);
 	 GPIOC->BSRR |= GPIO_BSRR_BS13;
-
-
  }
  ////////////// В Ы Х О Д ////////////////////
  
@@ -83,15 +80,9 @@ static int buttonPressed = 0;
 	 CLEAR_BIT(GPIOB->OTYPER, GPIO_OTYPER_OT8 | GPIO_OTYPER_OT9); //0 - PUSH PULL 
 	 MODIFY_REG(GPIOB->OSPEEDR, GPIO_OSPEEDER_OSPEEDR8_1 | GPIO_OSPEEDER_OSPEEDR9_1, GPIO_OSPEEDER_OSPEEDR8_0 | GPIO_OSPEEDER_OSPEEDR9_0); //MED SPEED
 	 MODIFY_REG(GPIOB->PUPDR, GPIO_PUPDR_PUPDR8_1 | GPIO_PUPDR_PUPDR9_1, GPIO_PUPDR_PUPDR8_0 | GPIO_PUPDR_PUPDR9_0); //pull_UPP - 01, подтяжка к 1
-
-	 
-	
-	 
 	 
  }
- 
-																				/////////////  О Б Р А Б О Т К А  К Н О П К И   //////////////
- 
+ 																		/////////////  О Б Р А Б О Т К А  К Н О П К И   //////////////
  int PushButtonB(uint16_t pinNumber)
  {
 	 
