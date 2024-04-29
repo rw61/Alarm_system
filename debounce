@@ -1,0 +1,22 @@
+void Debounce(uint8_t *pres_px, uint8_t *pres_px_long, uint8_t *cnt_px, uint32_t *prev_px, uint32_t GPIOx_IDR, uint32_t GPIO_IDR_IDx) 
+{
+	uint32_t cur_px = READ_BIT(GPIOx_IDR, GPIO_IDR_IDx); //(~GPIOx_IDR & GPIO_IDR_IDx) != 0;
+		if (cur_px != *prev_px) {
+										(*cnt_px)++;
+											if (*cnt_px > 4 ) {
+														*prev_px = cur_px;		
+																					if (cur_px != 0)
+																					{
+																						*pres_px = 1;
+																					}
+																					else{          
+																					*pres_px = 0;
+																						}
+																					  (*cnt_px) = 0;
+																			}																
+                            }
+  else {
+		/* обнуляем счётчик */
+	*cnt_px = 0;
+	}
+}
